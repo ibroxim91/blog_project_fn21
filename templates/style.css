@@ -1,0 +1,35 @@
+
+/* Cascading style sheets */
+body{
+    background:yellow;
+}
+
+table{
+    width:50%;
+    margin: 20px auto;
+
+}
+td{
+    padding: 10px;
+    text-align: center;
+}
+
+
+form{
+    width: 30%;
+    margin: 30px auto;
+    background-color: aliceblue;
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px silver;
+}
+
+input{
+    height: 25px;
+    margin: 15px;
+}
+
+.main{
+    width: 100%;
+}

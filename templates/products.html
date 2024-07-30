@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+
+  
+
+
+
+
+    <nav class="main navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button id="btn" class="btn btn-outline-success my-2 my-sm-0"
+             type="button">Search</button>
+          </form>
+        </div>
+      </nav>
+
+      <div class="container-fluid mt-5">
+        <div class="row">
+          
+     
+          {% for i in '12345678' %}
+              <div class="col-md-4 bg-dark  p-5">
+                <div class="card">
+                  <img class="card-img-top" src="https://www.bmw.uz/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png" alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">
+                      Some quick example text to build on the card title
+                      and make up the bulk of the card's content.
+                    </p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>  
+              </div>
+          {% endfor %}
+
+       
+
+
+        </div>
+      </div>
+
+
+      <div class="modal2">
+
+      </div>
+
+      <style>
+        .modal2{
+          width: 25%;
+          position: fixed;
+          height: 100vh;
+          background-color: blueviolet;
+          top: 0;
+          left: 0;
+          z-index: 99;
+          transform: translateX(-100%);
+          transition: 1s;
+        }
+        
+        .show{
+          transform: translateX(0%);
+
+        }
+      </style>
+      
+<script>
+
+ document.getElementById('btn').addEventListener('click', function(){
+      let modal = document.querySelector('.modal2')
+      modal.classList.toggle('show');
+ });
+
+
+</script>
+    
+</body>
+</html>
