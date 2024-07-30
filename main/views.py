@@ -71,4 +71,7 @@ def category(request, category_id):
     data = {'posts': posts, "category":category}
     return render(request, 'category.html', data)
 
-
+def post_view(request, post_id):
+    post = Post.objects.get(id=post_id)
+    data = {'post': post}
+    return render(request, 'post.html', data)

@@ -13,7 +13,7 @@
                             <div class="small text-muted">{{ last_post.created_at  }}</div>
                             <h2 class="card-title"> {{ last_post.title  }}</h2>
                             <p class="card-text"> {{ last_post.content  }} </p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
+                            <a class="btn btn-primary" href="{% url 'post' last_post.id  %}">Read more →</a>
                         </div>
                     </div>
                     <!-- Nested row for non-featured blog posts-->
