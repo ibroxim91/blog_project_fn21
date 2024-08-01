@@ -73,5 +73,8 @@ def category(request, category_id):
 
 def post_view(request, post_id):
     post = Post.objects.get(id=post_id)
-    data = {'post': post}
+    post.views += 1
+    post.save()
+    categories = Category.objects.all()
+    data = {'last_post': post, "categories":categories}
     return render(request, 'post.html', data)

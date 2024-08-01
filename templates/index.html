@@ -13,7 +13,7 @@
                             <div class="small text-muted">{{ last_post.created_at  }}</div>
                             <h2 class="card-title"> {{ last_post.title  }}</h2>
                             <p class="card-text"> {{ last_post.content  }} </p>
-                            <a class="btn btn-primary" href="{% url 'post' last_post.id  %}">Read more →</a>
+                            <a class="btn btn-primary" href="{% url 'main:post' last_post.id  %}">Read more →</a>
                         </div>
                     </div>
                     <!-- Nested row for non-featured blog posts-->
@@ -23,13 +23,13 @@
                             <!-- Blog post-->
                             <div class="card mb-4">
                                 <a href="#!"><img class="card-img-top" 
-                                    src="{{ p.image.url  }}" alt="..." /></a>
+                                    src="{{ p.image.url  }}" style="height: 250px;" alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">{{ p.title }}</h2>
-                                    <p class="card-text">{{ p.content }}</p>
+                                    <div class="small text-muted">{{ p.created_at|date:"Y-m-d" }}</div>
+                                    <h2 class="card-title h4">  {{ p.title|truncatewords:"7" }}</h2>
+                                    <p class="card-text">{{ p.content|truncatechars:"50"|lower }}</p>
                                     <a class="btn btn-primary"
-                                     href="#">Read more →</a>
+                                     href="{% url 'main:post' p.id %}">Read more →</a>
                                 </div>
                             </div>
                             <!-- Blog post-->
@@ -73,7 +73,7 @@
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
                                        {% for c in categories %}
-                                            <li><a href="{% url 'bolim' c.id  %}"> {{ c }} </a></li>
+                                            <li><a href="{% url 'main:category' c.id  %}"> {{ c }} </a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>
@@ -89,4 +89,6 @@
                 </div>
             </div>
         </div>
+
+
         {% endblock content %}
