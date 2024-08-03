@@ -29,7 +29,7 @@
                                     <h2 class="card-title h4">  {{ p.title|truncatewords:"7" }}</h2>
                                     <p class="card-text">{{ p.content|truncatechars:"50"|lower }}</p>
                                     <a class="btn btn-primary"
-                                     href="{% url 'main:post' p.id %}">Read more →</a>
+                                     href="/post/{{ p.id }}">Read more →</a>
                                 </div>
                             </div>
                             <!-- Blog post-->
@@ -73,7 +73,7 @@
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
                                        {% for c in categories %}
-                                            <li><a href="{% url 'main:category' c.id  %}"> {{ c }} </a></li>
+                                            <li>  {{ c.reg_date|date:"Y m" }} <a href="{% url 'main:category' c.id  %}"> {{ c }} </a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>

@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Category, Post
+from django.shortcuts import render, redirect
+from .models import Category, Post, Comment
 
 # Create your views here.
 users = [
@@ -73,8 +73,39 @@ def category(request, category_id):
 
 def post_view(request, post_id):
     post = Post.objects.get(id=post_id)
+    
+    if request.method == "POST":
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        comment = request.POST.get('comment')
+        comment = Comment.objects.create(post=post,  content=comment)
+        if request.user.is_authenticated:
+            comment.author = request.user
+        else:
+            comment.first_name = first_name    
+            comment.last_name = last_name    
+        comment.save()
+   
     post.views += 1
     post.save()
     categories = Category.objects.all()
-    data = {'last_post': post, "categories":categories}
+    # post.comments.all()
+    # comments = Comment.objects.filter(post=post)
+    data = {'last_post': post, "categories":categories, }
     return render(request, 'post.html', data)
+
+
+def post_reactions(request, post_id):
+    reactions = request.GET.get('reactions')
+    post = Post.objects.get(id=post_id)
+    print()
+    print(reactions)
+    print(post)
+    print()
+    if reactions == 'likes':
+        post.likes += 1
+    elif reactions == 'dislikes':
+        post.dislikes += 1
+    post.save()
+    return redirect(f'/post/{post_id}')
+
